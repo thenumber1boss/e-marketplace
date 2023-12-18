@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>User Login</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post" action="{{ url_for('index') }}">
+            {{ form.hidden_tag() }}
+            <label for="{{ form.username.id }}">Username:</label>
+            {{ form.username(class="form-control") }}
+            <label for="{{ form.password.id }}">Password:</label>
+            {{ form.password(class="form-control") }}
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='bundle.js') }}"></script>
+</body>
+</html>

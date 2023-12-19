@@ -154,6 +154,142 @@ $(topSellingProductsPlaceholder).on('setPosition', function (event, slick) {
 document.addEventListener('DOMContentLoaded', renderTopSellingProducts);
 
 
+
+async function renderProductsByCategory(categoryId, placeholderId) {
+    const productsPlaceholder = document.getElementById(placeholderId);
+
+    try {
+        // Fetch products by category
+        const response = await fetch(`http://localhost:5500/api/products-by-category/${categoryId}`);
+        const products = await response.json();
+
+        // Load product card template
+        const productCardTemplate = await loadProductCard();
+
+        // Clear existing content in the placeholder
+        productsPlaceholder.innerHTML = '';
+
+        // Render products in the placeholder
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.classList.add('product-card');
+            productCard.innerHTML = productCardTemplate;
+
+            // Set product details
+            productCard.querySelector('.product-image').src = product.image_url;
+            productCard.querySelector('.product-name').textContent = product.product_name;
+
+            // Convert numerical rating to Font Awesome stars
+            const ratingElement = productCard.querySelector('.product-rating');
+
+            ratingElement.innerHTML = '';
+            ratingElement.textContent = `Rating: ${product.rating}`;
+            const rating = product.rating; // Use the actual rating without rounding
+            const fullStars = Math.floor(rating);
+            const remainder = rating % 1;
+            const halfStar = remainder >= 0.01 && remainder <= 0.9;
+
+            // Render full stars
+            for (let i = 0; i < fullStars; i++) {
+                const starIcon = document.createElement('i');
+                starIcon.classList.add('fas', 'fa-star');
+                ratingElement.appendChild(starIcon);
+            }
+
+            // Render half star if applicable
+            if (halfStar) {
+                const halfStarIcon = document.createElement('i');
+                halfStarIcon.classList.add('fas', 'fa-star-half-alt');
+                ratingElement.appendChild(halfStarIcon);
+            }
+
+            // Calculate the number of empty stars needed
+            const emptyStars = 5 - Math.ceil(rating);
+
+            // Render empty stars
+            for (let i = 0; i < emptyStars; i++) {
+                const emptyStarIcon = document.createElement('i');
+                emptyStarIcon.classList.add('far', 'fa-star'); // Using 'far' for empty star
+                ratingElement.appendChild(emptyStarIcon);
+            }
+
+            // Set vendor location
+            productCard.querySelector('.vendor-location').textContent = `Location: ${product.vendor_location}`;
+
+            // Add click event listener to the product card
+            productCard.addEventListener('click', () => {
+                // Perform action when the card is clicked
+                console.log(`Product card for ${product.product_name} clicked!`);
+            });
+
+            // Append product card to the placeholder
+            productsPlaceholder.appendChild(productCard);
+        });
+
+        // Initialize Slick Carousel for this category
+        $(productsPlaceholder).slick({
+            slidesToShow: 4.5,
+            slidesToScroll: 3,
+            infinite: false,
+            arrows: true,
+            prevArrow: '<i class="fas fa-chevron-circle-left custom-prev-button"></i>',
+            nextArrow: '<i class="fas fa-chevron-circle-right custom-next-button"></i>',
+            responsive: [
+                {
+                    breakpoint: 992, // Responsive settings for smaller screens
+                    settings: {
+                        slidesToShow: 2.5,
+                        slidesToScroll: 2,
+                        arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 576, // Responsive settings for smaller screens
+                    settings: {
+                        slidesToShow: 1.5,
+                        slidesToScroll: 1,
+                        arrows: false,
+                    }
+                }
+            ]
+        });
+
+        // Event listener for Slick's setPosition event
+        $(productsPlaceholder).on('setPosition', function (event, slick) {
+            // Get the current slide index
+            const currentSlide = slick.slickCurrentSlide();
+
+            // Show or hide the custom prev button based on the current slide
+            if (currentSlide === 0) {
+                $('.custom-prev-button').hide();
+            } else {
+                $('.custom-prev-button').show();
+            }
+
+            // Show or hide the custom next button based on the current slide and total slides
+            if (currentSlide + 4 >= slick.slideCount) {
+                $('.custom-next-button').hide();
+            } else {
+                $('.custom-next-button').show();
+            }
+        });
+    } catch (error) {
+        console.error(`Error rendering products for category ${categoryId}:`, error);
+    }
+}
+
+// Call the rendering function for each category when the page loads
+document.addEventListener('DOMContentLoaded', async () => {
+    await renderProductsByCategory(1, 'grainsPlaceholder');
+    await renderProductsByCategory(2, 'rootsTubbersPlaceholder');
+    await renderProductsByCategory(3, 'fruitsVegetablesPlaceholder');
+    await renderProductsByCategory(4, 'meatFishPlaceholder');
+    await renderProductsByCategory(5, 'oilsPlaceholder');
+});
+
+
+
+
 // Function to fetch top-selling products from the database
 //async function fetchTopSellingProducts() {
 //    try {

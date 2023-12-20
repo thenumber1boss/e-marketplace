@@ -1,0 +1,150 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+.main-container {
+    background-image: url(/frontend/assets/images/login-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(244, 247, 242);
+    opacity: 0.9;
+    
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    padding: 40px;
+    background-color: rgba(109, 190, 69, 0.4);
+    box-shadow: 0 0 15px rgba(3, 3, 3, 0.8);
+    border-radius: 10px;
+}
+
+.form-container h2 {
+    margin-bottom: 30px;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name-container input {
+    width: 150px !important;
+}
+
+.login-form,
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fgt-pwd-submit {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fgt-pwd-submit p {
+    font-size: 13px;
+    margin: 0;
+    text-align: left;
+    margin-bottom: 10px;
+    padding: 2px 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fgt-pwd-submit p:hover {
+    border-radius: 2px;
+    text-decoration: underline;
+}
+
+.fgt-pwd-submit button {
+    font-size: 18px;
+    justify-content: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #a2ca8e;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.fgt-pwd-submit button:hover {
+    background-color: #62af3b;
+}
+
+.signup-form label,
+#login-form label {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.login-form input,
+.signup-form input {
+    margin-bottom: 10px;
+    width: 250px;
+    padding: 7px 5px;
+    background-color: rgba(243, 239, 239, 0.7);
+    border: 1px solid rgb(56, 54, 54);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.sign-up,
+.login {
+    font-weight: bold;
+    cursor: pointer;
+    color: #ff8c00;
+    text-shadow: 0 0 1px #000000;
+}
+
+.sign-up:hover {
+    text-decoration: underline;
+}
+
+.lower-elements {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 576px) {
+
+    .main-form-container {
+        opacity: 1;
+    }
+
+    .form-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .form-container h2 {
+        font-size: 18px;
+        margin-bottom: 35px;
+    }
+
+    .name-container input {
+        width: 120px !important;
+    }
+}

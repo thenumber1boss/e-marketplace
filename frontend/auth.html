@@ -1,0 +1,63 @@
+<!-- login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/src/components/auth/auth.css">
+    <title>Authentication Page</title>
+    <script src="/frontend/src/components/auth/auth.js"></script>
+</head>
+<body>
+<div class="main-container">
+    <div class="form-container" id="logInFormContainer">
+        <h2>Welcome to Farmers Market</h2>
+        <form class="login-form">
+            <!-- Login form elements go here -->
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" required>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" required>
+            <div class="fgt-pwd-submit">
+                <p>Forgot Password</p>
+                <button type="submit">Login</button>
+            </div>
+            <p class="lower-elements">Don't have an account? <span class="sign-up" onclick="showSignUpForm()">Sign up here.</span></p>
+        </form>
+    </div>
+    
+
+<!-- placeholder to render sign up contents -->
+    <div class="form-container" id="signUpFormContainer" style="display: none;">
+        <h2>Sign Up on Farmers Market</h2>
+        <form class="signup-form">
+            <!-- Sign-up form elements go here -->
+            <div class="name-container">
+                <div style="display: flex; flex-direction: column; padding-right: 5px;">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div style="display: flex; flex-direction: column; padding-left: 5px;">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" required>
+                </div>
+            </div>
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" required>
+                <label for="signupPassword1">Password:</label>
+                <input type="password" id="signupPassword1" required>
+                <label for="signupPassword2">Confirm Password:</label>
+                <input type="password" id="signupPassword2" required>
+                <div class="fgt-pwd-submit">
+                    <button type="submit">Sign Up</button>
+                </div>
+            <p class="lower-elements">Have an account? <span class="login" onclick="showLoginForm()">login here</span></p>
+        </form>
+    </div>
+    </div>
+
+<!-- placeholder to render forgot-password contents -->
+
+</body>
+</html>

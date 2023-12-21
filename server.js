@@ -3,7 +3,7 @@ const cors = require('cors');
 const mysql = require('mysql2/promise');
 
 const app = express();
-const port = 5500; // You can change the port as needed
+const port = 5600; // You can change the port as needed
 
 // Use CORS middleware
 app.use(cors());

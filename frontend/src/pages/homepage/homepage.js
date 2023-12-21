@@ -14,7 +14,7 @@ async function loadProductCard() {
 
 async function fetchTopSellingProducts() {
     try {
-        const response = await fetch('http://localhost:5500/api/top-selling-products'); // API endpoint for top selling products communication
+        const response = await fetch('http://localhost:5600/api/top-selling-products'); // API endpoint for top selling products communication
         const data = await response.json();
         return data;
     } catch (error) {
@@ -160,7 +160,7 @@ async function renderProductsByCategory(categoryId, placeholderId) {
 
     try {
         // Fetch products by category
-        const response = await fetch(`http://localhost:5500/api/products-by-category/${categoryId}`);
+        const response = await fetch(`http://localhost:5600/api/products-by-category/${categoryId}`);
         const products = await response.json();
 
         // Load product card template

@@ -89,7 +89,7 @@ async function renderTopSellingProducts() {
         // Add click event listener to the product card
         productCard.addEventListener('click', () => {
             // Perform action when the card is clicked
-            console.log(`Product card for ${product.product_name} clicked!`);
+            console.log(`Product card for ${product.product_name} with Product ID ${product.product_id}  clicked!`);
         })
 
         // Append product card to the placeholder

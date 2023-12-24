@@ -83,6 +83,35 @@ app.get('/api/products-by-category/:categoryId', async (req, res) => {
     }
 });
 
+// ...
+
+// API endpoint to fetch product details by ID
+app.get('/api/product/:productId', async (req, res) => {
+    try {
+        const productId = req.params.productId;
+
+        // Fetch product details by ID from the database
+        const connection = await pool.getConnection();
+        const [results] = await connection.query('SELECT * FROM products WHERE product_id = ?', [productId]);
+        connection.release();
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        // Log success message with fetched data
+console.log(`Successfully fetched product details for ID ${productId}:`, results);
+
+
+        res.json(results[0]); // Assuming the product ID is unique
+    } catch (error) {
+        console.error(`Error fetching product details for ID ${productId}:`, error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

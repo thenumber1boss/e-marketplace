@@ -10,6 +10,9 @@
      <!-- Link to header CSS file -->
   <link rel="stylesheet" href="/frontend\src\components\header\header.css">
      <link rel="stylesheet" href="/frontend/src/pages/product-details/product-details.css">
+
+    <!-- Link to homepage CSS file-->
+<link rel="stylesheet" href="/frontend\src\pages\homepage\homepage.css">
      <!-- Material icon-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <!-- Bootstrap css-->
@@ -52,35 +55,48 @@
 
   <!-- Product details section -->
   <div class="product-details-container">
-    <div>
-        <div>
+    <div class="product-details-container-first-child">
+      <div class="product-details-container-second-child">
+        <div class="active-image-and-product-name">
             <div id="activeProductDetailsImage"><!--placeholder for active product-details image--></div>
-            <div id="productName"><!--Placeholder for Product Name--></div>
+            <div class="product-details-page-product-name" id="productName"><!--Placeholder for Product Name--></div>
+
+            <div class="product-details-page-images">
+              <div id="productDetailsImage1"> <!-- Placeholder for image 1 --></div>
+              <div id="productDetailsImage2"> <!-- Placeholder for image 2 --></div>
+              <div id="productDetailsImage3"> <!-- Placeholder for image 3 --></div>
+              <div id="productDetailsImage4"> <!-- Placeholder for image 4 --></div>
+          </div>
         </div>
-        <div>
+        <div class="product-rating-desc-and-quantity">
             <p>Product Rating</p>
-            <div id="productRating"><!--Placeholder for rating--></div>
+            <div class="product-details-page-rating" id="productRating"><!--Placeholder for rating--></div>
             <p>Product Description</p>
-            <div id="productDescription"><!-- Placeholder for Product Description--></div>
-            <div id="pricePerMeasure"><!-- placeholder for Price and measure --></div>
-            <div>
-                <p>QUANTITY</p>
-                <div>
-                    <div id="value"><!-- Placeholder for Quantity value counter--></div>
-                    <div id="valueMinus"><!-- placeholder for font-awesome minus-square--></div>
-                    <div id="valuePlus"><!-- placeholder for font-awesome plus-square--></div>
-                </div>
-            </div>
-             <div class=""><button>ADD TO CART</button></div>
+            <div class="product-description" id="productDescription"><!-- Placeholder for Product Description--></div>
+            <div class="product-details-page-price-measure" id="pricePerMeasure"><!-- placeholder for Price and measure --></div>
+            <div class="product-details-page-quantity">
+              <p>QUANTITY</p>
+              <div class="product-details-page-quantity-counter">
+                  <div class="quantity-value" id="value"><!-- Placeholder for Quantity value counter--></div>
+                  <div id="valueMinus">
+                      <!-- Font Awesome minus-square icon -->
+                      <i class="fas fa-minus-square"></i>
+                  </div>
+                  <div id="valuePlus">
+                      <!-- Font Awesome plus-square icon -->
+                      <i class="fas fa-plus-square"></i>
+                  </div>
+              </div>
+          </div>
+             <div class="product-details-page-add-to-cart"><button>ADD TO CART</button></div>
          </div>
-            <div>
-                <div id="productDetailsImage1"> <!-- Placeholder for image 1 --></div>
-                <div id="productDetailsImage2"> <!-- Placeholder for image 2 --></div>
-                <div id="productDetailsImage3"> <!-- Placeholder for image 3 --></div>
-                <div id="productDetailsImage4"> <!-- Placeholder for image 4 --></div>
-            </div>
+    </div>
         </div>
-    <div id="sameVendorCarousel"> <!--Placeholder for products from same vendor carousel --></div>
+    <section class="sections">
+      <div class="green-header">Products From The Same Vendor</div>
+      <div id="sameVendorCarousel" class="carousel"> <!--Placeholder for products from same vendor carousel --></div>
+  </div>
+  </section>
   </div>
 
    <!-- Placeholder for footer -->

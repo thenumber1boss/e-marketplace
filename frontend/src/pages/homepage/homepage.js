@@ -89,7 +89,7 @@ async function renderTopSellingProducts() {
         // Add click event listener to the product card
         productCard.addEventListener('click', () => {
             // Redirect to the product details page with the product ID
-            window.location.href = `/frontend/src/pages/product-details/product-details.html?id=${product.product_id}`;
+            window.location.href = `/frontend/src/pages/product-details/product-details.html?id=${product.product_id}&vendor_id=${product.vendor_id}`;
             console.log(`Product card for ${product.product_name} clicked!`);
         });
 
@@ -221,9 +221,10 @@ async function renderProductsByCategory(categoryId, placeholderId) {
             // Add click event listener to the product card
             productCard.addEventListener('click', () => {
                 // Redirect to the product details page with the product ID
-                window.location.href = `/frontend/src/pages/product-details/product-details.html?id=${product.product_id}`;
+                window.location.href = `/frontend/src/pages/product-details/product-details.html?id=${product.product_id}&vendor_id=${product.vendor_id}`;
                 console.log(`Product card for ${product.product_name} clicked!`);
             });
+
 
             // Append product card to the placeholder
             productsPlaceholder.appendChild(productCard);

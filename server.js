@@ -111,6 +111,30 @@ console.log(`Successfully fetched product details for ID ${productId}:`, results
 });
 
 
+// API endpoint to fetch products by vendor ID
+app.get('/api/products-by-vendor/:vendorId', async (req, res) => {
+    let vendorId; // Declare vendorId here to make it accessible in the catch block
+    try {
+        vendorId = req.params.vendorId;
+
+        // Fetch products by vendor ID from the database
+        const connection = await pool.getConnection();
+        const [results] = await connection.query('SELECT * FROM products WHERE vendor_id = ?', [vendorId]);
+        connection.release();
+
+        // Log success message
+        console.log(`Successfully fetched products for vendor ID ${vendorId}`);
+
+        res.json(results);
+    } catch (error) {
+        console.error(`Error fetching products for vendor ID ${vendorId}:`, error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+
+
 
 // Start the server
 app.listen(port, () => {
